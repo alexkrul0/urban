@@ -1,6 +1,6 @@
 import sqlite3
 
-connection = sqlite3.connect('not_telegram.db')
+connection = sqlite3.connect('not_telegram1.db')
 cursor = connection.cursor()
 
 cursor.execute('''
@@ -24,6 +24,11 @@ cursor.execute(' CREATE INDEX IF NOT EXISTS idx_email ON Users (email)')
 #     cursor.execute('UPDATE Users SET balance = ? WHERE id = ?', (500, i))
 #     i += 2
 
+# j = 1
+# while j in range(1, 11):
+#     cursor.execute('DELETE FROM Users WHERE id = ?', (j,))
+#     j += 3
+#
 cursor.execute('SELECT username, email, age, balance FROM Users WHERE age != ?', (60,))
 users = cursor.fetchall()
 for user in users:
